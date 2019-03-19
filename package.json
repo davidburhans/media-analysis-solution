@@ -1,0 +1,25 @@
+{
+    "name": "media-analysis-function",
+    "description": "Do the CI / CD stuff",
+    "author": {
+        "name": "aws-solutions-builder"
+    },
+    "version": "0.0.1",
+    "dependencies": {
+        "npm-run-all": "*"
+    },
+    "scripts": {                
+        "prebuild:analysis": "cd source/analysis && npm i",
+        "prebuild:api": "cd source/api && npm i",
+        "prebuild:helper": "cd source/helper && npm i",
+        "prebuild": "run-p prebuild:*", 
+        "build:analysis": "cd source/analysis && npm run build",
+        "build:api": "cd source/api && npm run build",
+        "build:helper": "cd source/helper && npm run build",       
+        "build": "run-p build:*",
+        "test:analysis": "cd source/analysis && npm test",
+        "test:api": "cd source/api && npm test",
+        "test:helper": "cd source/helper && npm test",
+        "test": "run-s test:*"
+    }
+}
