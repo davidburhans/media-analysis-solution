@@ -16,7 +16,7 @@ phases:
       - npm run build
   post_build:
     commands:
-      - echo Packaging...
+      - echo Deploying to ${AWS_DEPLOY_BUCKET}...
       - cd deployment && ./build-s3-dist.sh ${AWS_DEPLOY_BUCKET} v1.0.0
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
