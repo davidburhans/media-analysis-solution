@@ -1,0 +1,27 @@
+# Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
+version: 0.2
+
+phases:
+  install:
+    commands:       
+      - npm i      
+  pre_build:
+    commands:
+      - echo Initializing projects...
+      - npm run prebuild
+      # - npm run test
+  build:
+    commands:
+      - echo Building projects...
+      - npm run build
+  post_build:
+    commands:
+      - echo Packaging...
+      - cd deployment && ./build-s3-dist.sh ${AWS_DEPLOY_BUCKET} v1.0.0
+# Include only the files required for your application to run.
+# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
+# used only for building and testing.
+artifacts:
+  files:
+    - '**/*'
+  base-directory: deployment/dist
