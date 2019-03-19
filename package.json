@@ -12,14 +12,18 @@
         "prebuild:analysis": "cd source/analysis && npm i",
         "prebuild:api": "cd source/api && npm i",
         "prebuild:helper": "cd source/helper && npm i",
+        "prebuild:website": "cd source/web_site && npm i",
         "prebuild": "run-p prebuild:*", 
         "build:analysis": "cd source/analysis && npm run build",
         "build:api": "cd source/api && npm run build",
         "build:helper": "cd source/helper && npm run build",       
+        "build:website": "cd source/web_site && npm run build",
         "build": "run-p build:*",
         "test:analysis": "cd source/analysis && npm test",
         "test:api": "cd source/api && npm test",
         "test:helper": "cd source/helper && npm test",
-        "test": "run-s test:*"
+        "test:website": "cd source/web_site && npm test",
+        "test": "run-s test:*",
+        "postbuild": "cd deployment && ./build-s3-dist.sh ${AWS_DEPLOY_BUCKET} v1.0.0"
     }
 }

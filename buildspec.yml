@@ -5,6 +5,7 @@ phases:
   install:
     commands:       
       - npm i      
+      - chmod +x deployment/build-s3-dist.sh
   pre_build:
     commands:
       - echo Initializing projects...
@@ -17,7 +18,7 @@ phases:
   post_build:
     commands:
       - echo Deploying to ${AWS_DEPLOY_BUCKET}...
-      - cd deployment && ./build-s3-dist.sh ${AWS_DEPLOY_BUCKET} v1.0.0
+      - npm run postbuild
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.

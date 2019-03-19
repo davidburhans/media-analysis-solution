@@ -76,8 +76,6 @@ echo "Analysis Function"
 echo "------------------------------------------------------------------------------"
 echo "Building Analysis Lambda function"
 cd "$source_dir/analysis" || exit
-npm install
-npm run build
 npm run zip
 cp "./dist/media-analysis-function.zip" "$dist_dir/media-analysis-function.zip"
 
@@ -86,8 +84,6 @@ echo "API Function"
 echo "------------------------------------------------------------------------------"
 echo "Building API Lambda function"
 cd "$source_dir/api" || exit
-npm install
-npm run build
 npm run zip
 cp "./dist/media-analysis-api.zip" "$dist_dir/media-analysis-api.zip"
 
@@ -96,8 +92,6 @@ echo "Helper Function"
 echo "------------------------------------------------------------------------------"
 echo "Building Helper Lambda function"
 cd "$source_dir/helper" || exit
-npm install
-npm run build
 npm run zip
 cp "./dist/media-analysis-helper.zip" "$dist_dir/media-analysis-helper.zip"
 
@@ -106,8 +100,6 @@ echo "Website"
 echo "------------------------------------------------------------------------------"
 echo "Building Demo Website"
 cd "$source_dir/web_site" || exit
-npm install
-npm run build
 cp -r "./build" "$dist_dir/web_site"
 
 echo "------------------------------------------------------------------------------"
